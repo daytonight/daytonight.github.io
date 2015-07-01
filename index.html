@@ -6,6 +6,16 @@
 </head>
 
 <body>
-<p>welcome to my blog</p>
+<p>---<br>
+  　　layout: default<br>
+  　　title: MYBlog<br>
+　　---</p>
+<p>　　&lt;h2&gt;{{ page.title }}&lt;/h2&gt;</p>
+<p>　　&lt;p&gt;TEST1&lt;/p&gt;</p>
+<p>　　&lt;ul&gt;</p>
+<p>　　　　{% for post in site.posts %}</p>
+<p>　　　　　　&lt;li&gt;{{ post.date | date_to_string }} &lt;a href="{{ site.baseurl }}{{ post.url }}"&gt;{{ post.title }}&lt;/a&gt;&lt;/li&gt;</p>
+<p>　　　　{% endfor %}</p>
+<p>　　&lt;/ul&gt;</p>
 </body>
 </html>
