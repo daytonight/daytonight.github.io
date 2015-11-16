@@ -97,8 +97,7 @@
         <blockquote>
 <p>基本原理：利用ReportLab包的多个模块将由urllib抓取的数据转换成折线图PDF文件(生成一张图纸&gt;将抓取的数据转换成折线图(通过LinePlot类的实例设置折线颜色等属性)&gt;将折线和提示字符串添加到图纸中(drawing.add())&gt;将图纸保存到指定文件</p>
 </blockquote>
-<p>程序部分：</p>
-<pre><code><span class="built_in">from</span> urllib import urlopen 
+<h3 id="程序部分：">程序部分：</h3><pre><code><span class="built_in">from</span> urllib import urlopen 
 <span class="built_in">from</span> reportlab.graphics.shapes import * 
 <span class="built_in">from</span> reportlab.graphics.charts.lineplots import LinePlot 
 <span class="built_in">from</span> reportlab.graphics.charts.textlabels import Label 
@@ -180,8 +179,7 @@ renderPDF.drawToFile(drawing, <span class="string">'report3.pdf'</span>,<span cl
 </header>
     <div class="article-content">
         
-        <p>###Python切片方法：</p>
-<p>&nbsp; &nbsp; &nbsp;&nbsp; number=[1,2,3,4,5,6,7,8,9]</p>
+        <h3 id="Python切片方法：">Python切片方法：</h3><p>&nbsp; &nbsp; &nbsp;&nbsp; number=[1,2,3,4,5,6,7,8,9]</p>
 <ol>
 <li><p>正向切片(Step&gt;0)：<br>number[indexL,indexR,Step]<br>左序检索：indexL=（0,8）、indexR=（1,9）<br>右序检索：indexL=（-1,9）、indexR=(0，-9)<br>例：<br>number[1,5]=[2,3,4,5]<br>number[1:]=[2,3,4,5,6,7,8,9]<br>number[:]=[1,2,3,4,5,6,7,8,9]<br>number[0,-2]=[1,2,3,4,5,6,7]<br>number[-3,-1]=7,8<br>若左边的索引（indexL）比右边的索引晚出现在序列中（从左往右看），结果将是空序列：<br>number[-3:0]=[]<br>步长(Step)&gt;0(不能=0)，将按步长遍历:<br>number[0:9:2]=1,3,5,7,9</p>
 </li>
@@ -292,8 +290,7 @@ renderPDF.drawToFile(drawing, <span class="string">'report3.pdf'</span>,<span cl
         <blockquote>
 <p><strong>基本原理：</strong>将各种文本元素（如：标题、段落、列表等等）进行分类后，为其添加HTML标记</p>
 </blockquote>
-<p>程序由如下几个部分组成</p>
-<blockquote>
+<h3 id="程序由如下几个部分组成">程序由如下几个部分组成</h3><blockquote>
 <p>文本块生成器(util.py)：</p>
 </blockquote>
 <pre><code><span class="comment">#coding:utf-8</span>
@@ -620,8 +617,7 @@ def <span class="function"><span class="title">sort</span><span class="params">(
 </header>
     <div class="article-content">
         
-        <p>##查询电话和住址的小脚本</p>
-<pre><code><span class="comment">#!/usr/bin/env python</span>
+        <h3 id="查询电话和住址的小脚本">查询电话和住址的小脚本</h3><pre><code><span class="comment">#!/usr/bin/env python</span>
 
 
 people={
@@ -717,8 +713,7 @@ request=raw_input(<span class="string">'phone number (p)or addres (a)?'</span>)
 </header>
     <div class="article-content">
         
-        <p>###&nbsp;计算机是一种能迅速而高效的自动完成信息处理的电子设备，它能按照程序对信息进行加工、处理、存储。计算机自诞生至今已有约七十年的历史，应用于社会上各个领域，对人类科学文明的发展产生了革命性的的影响，其软硬件更新也发生了翻天覆地的变化，根据制造电子计算机采用的物理器件的不同,可以将计算机的发展过程分为如下四个阶段:</p>
-<ol>
+        <h3 id="&nbsp;计算机是一种能迅速而高效的自动完成信息处理的电子设备，它能按照程序对信息进行加工、处理、存储。计算机自诞生至今已有约七十年的历史，应用于社会上各个领域，对人类科学文明的发展产生了革命性的的影响，其软硬件更新也发生了翻天覆地的变化，根据制造电子计算机采用的物理器件的不同,可以将计算机的发展过程分为如下四个阶段:">&nbsp;计算机是一种能迅速而高效的自动完成信息处理的电子设备，它能按照程序对信息进行加工、处理、存储。计算机自诞生至今已有约七十年的历史，应用于社会上各个领域，对人类科学文明的发展产生了革命性的的影响，其软硬件更新也发生了翻天覆地的变化，根据制造电子计算机采用的物理器件的不同,可以将计算机的发展过程分为如下四个阶段:</h3><ol>
 <li><p>第一代计算机（1946-1957年）<br>&nbsp;第一代计算机使用的逻辑器件是电子管，电子管会大量发热，且体积较大，同时采用磁鼓作为主存储器，磁带作为辅助存储设备。这一时期的计算机的特点是体积大、运算速度低、存储量小、可靠性低，几乎没有软件配置。世界上第一台数字计算机ENIAC，于1946年被美国宾夕法尼亚大学研制出来，代表了计算机发展史上的里程碑。</p>
 </li>
 <li><p>第二代计算机（1959-1965年）<br>&#160; 第二代计算机使用的逻辑器件主要是晶体管，采用磁芯作为存储器，磁盘作为辅助存储设备，同时引进了编制寄存器和浮点运算硬件，利用I/O处理提高了输入输出的效率。这不仅使计算机的体积缩小了许多，同时增加了机器的稳定性并提高了运算速度，减小了功耗，降低了价格。</p>
