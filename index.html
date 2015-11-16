@@ -97,34 +97,40 @@
         <blockquote>
 <p>基本原理：利用ReportLab包的多个模块将由urllib抓取的数据转换成折线图PDF文件(生成一张图纸&gt;将抓取的数据转换成折线图(通过LinePlot类的实例设置折线颜色等属性)&gt;将折线和提示字符串添加到图纸中(drawing.add())&gt;将图纸保存到指定文件</p>
 </blockquote>
-<p>##程序部分：<br>    from urllib import urlopen<br>    from reportlab.graphics.shapes import *<br>    from reportlab.graphics.charts.lineplots import LinePlot<br>    from reportlab.graphics.charts.textlabels import Label<br>    from reportlab.graphics import renderPDF </p>
-<pre><code>URL = <span class="string">'ftp://ftp.swpc.noaa.gov/pub/weekly/Predict.txt'</span> 
+<p>##程序部分：</p>
+<pre><code><span class="built_in">from</span> urllib import urlopen 
+<span class="built_in">from</span> reportlab.graphics.shapes import * 
+<span class="built_in">from</span> reportlab.graphics.charts.lineplots import LinePlot 
+<span class="built_in">from</span> reportlab.graphics.charts.textlabels import Label 
+<span class="built_in">from</span> reportlab.graphics import renderPDF 
+
+<span class="built_in">URL</span> = <span class="string">'ftp://ftp.swpc.noaa.gov/pub/weekly/Predict.txt'</span> 
 COMMENT_CHARS = <span class="string">'#:'</span> 
 
-drawing = <span class="function"><span class="title">Drawing</span><span class="params">(<span class="number">400</span>, <span class="number">200</span>)</span></span> 
+drawing = Drawing(<span class="number">400</span>, <span class="number">200</span>) 
 data = [] 
-<span class="keyword">for</span> line <span class="keyword">in</span> <span class="function"><span class="title">urlopen</span><span class="params">(URL)</span></span>.<span class="function"><span class="title">readlines</span><span class="params">()</span></span>: 
-    <span class="keyword">if</span> not line.<span class="function"><span class="title">isspace</span><span class="params">()</span></span> and not line[<span class="number">0</span>] <span class="keyword">in</span> COMMENT_CHARS:  
-            data.<span class="function"><span class="title">append</span><span class="params">([float(n)</span></span> <span class="keyword">for</span> n <span class="keyword">in</span> line.<span class="function"><span class="title">split</span><span class="params">()</span></span>]) 
+<span class="keyword">for</span> <span class="built_in">line</span> <span class="operator">in</span> urlopen(<span class="built_in">URL</span>).readlines(): 
+    <span class="keyword">if</span> <span class="operator">not</span> <span class="built_in">line</span>.isspace() <span class="operator">and</span> <span class="operator">not</span> <span class="built_in">line</span>[<span class="number">0</span>] <span class="operator">in</span> COMMENT_CHARS:  
+            data.append([float(n) <span class="keyword">for</span> n <span class="operator">in</span> <span class="built_in">line</span>.<span class="built_in">split</span>()]) 
 
-pred = [row[<span class="number">2</span>] <span class="keyword">for</span> row <span class="keyword">in</span> data] 
-high = [row[<span class="number">3</span>] <span class="keyword">for</span> row <span class="keyword">in</span> data] 
-low = [row[<span class="number">4</span>] <span class="keyword">for</span> row <span class="keyword">in</span> data] 
-times = [row[<span class="number">0</span>] + row[<span class="number">1</span>]/<span class="number">12.0</span> <span class="keyword">for</span> row <span class="keyword">in</span> data] 
-lp = <span class="function"><span class="title">LinePlot</span><span class="params">()</span></span>
-lp<span class="class">.x</span> = <span class="number">50</span> 
-lp<span class="class">.y</span> = <span class="number">50</span> 
-lp<span class="class">.height</span> = <span class="number">125</span> 
-lp<span class="class">.width</span> = <span class="number">300</span>
-lp<span class="class">.data</span> = [<span class="function"><span class="title">zip</span><span class="params">(times, pred)</span></span>,<span class="function"><span class="title">zip</span><span class="params">(times,high)</span></span>,<span class="function"><span class="title">zip</span><span class="params">(times, low)</span></span>] 
-lp<span class="class">.lines</span>[<span class="number">0</span>]<span class="class">.strokeColor</span> = colors<span class="class">.blue</span> 
-lp<span class="class">.lines</span>[<span class="number">1</span>]<span class="class">.strokeColor</span> = colors<span class="class">.red</span> 
-lp<span class="class">.lines</span>[<span class="number">2</span>]<span class="class">.strokeColor</span> = colors<span class="class">.green</span> 
+pred = [row[<span class="number">2</span>] <span class="keyword">for</span> row <span class="operator">in</span> data] 
+high = [row[<span class="number">3</span>] <span class="keyword">for</span> row <span class="operator">in</span> data] 
+low = [row[<span class="number">4</span>] <span class="keyword">for</span> row <span class="operator">in</span> data] 
+times = [row[<span class="number">0</span>] + row[<span class="number">1</span>]/<span class="number">12.0</span> <span class="keyword">for</span> row <span class="operator">in</span> data] 
+lp = LinePlot()
+lp.x = <span class="number">50</span> 
+lp.y = <span class="number">50</span> 
+lp.height = <span class="number">125</span> 
+lp.width = <span class="number">300</span>
+lp.data = [zip(times, pred),zip(times,high),zip(times, low)] 
+lp.<span class="keyword">lines</span>[<span class="number">0</span>].strokeColor = colors.blue 
+lp.<span class="keyword">lines</span>[<span class="number">1</span>].strokeColor = colors.red 
+lp.<span class="keyword">lines</span>[<span class="number">2</span>].strokeColor = colors.green 
 
-drawing.<span class="function"><span class="title">add</span><span class="params">(lp)</span></span> 
-drawing.<span class="function"><span class="title">add</span><span class="params">(String(<span class="number">250</span>,<span class="number">150</span>,<span class="string">'Sunspots'</span>,fontSize=<span class="number">14</span>,fillColor=colors.red)</span></span>) 
+drawing.<span class="built_in">add</span>(lp) 
+drawing.<span class="built_in">add</span>(String(<span class="number">250</span>,<span class="number">150</span>,<span class="string">'Sunspots'</span>,fontSize=<span class="number">14</span>,fillColor=colors.red)) 
 
-renderPDF.<span class="function"><span class="title">drawToFile</span><span class="params">(drawing, <span class="string">'report3.pdf'</span>,<span class="string">'Sunspots'</span>)</span></span>
+renderPDF.drawToFile(drawing, <span class="string">'report3.pdf'</span>,<span class="string">'Sunspots'</span>)
 </code></pre>
         
         
