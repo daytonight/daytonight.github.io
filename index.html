@@ -97,7 +97,7 @@
         <blockquote>
 <p>基本原理：利用ReportLab包的多个模块将由urllib抓取的数据转换成折线图PDF文件(生成一张图纸&gt;将抓取的数据转换成折线图(通过LinePlot类的实例设置折线颜色等属性)&gt;将折线和提示字符串添加到图纸中(drawing.add())&gt;将图纸保存到指定文件</p>
 </blockquote>
-<p>##程序部分：</p>
+<p>程序部分：</p>
 <pre><code><span class="built_in">from</span> urllib import urlopen 
 <span class="built_in">from</span> reportlab.graphics.shapes import * 
 <span class="built_in">from</span> reportlab.graphics.charts.lineplots import LinePlot 
@@ -292,7 +292,7 @@ renderPDF.drawToFile(drawing, <span class="string">'report3.pdf'</span>,<span cl
         <blockquote>
 <p><strong>基本原理：</strong>将各种文本元素（如：标题、段落、列表等等）进行分类后，为其添加HTML标记</p>
 </blockquote>
-<p>##程序由如下几个部分组成</p>
+<p>程序由如下几个部分组成</p>
 <blockquote>
 <p>文本块生成器(util.py)：</p>
 </blockquote>
