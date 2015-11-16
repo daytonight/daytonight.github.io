@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python项目1：即时标记（将文本文件转化为HTML格式） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本原理：将各种文本元素（如：标题、段落、列表等等）进行分类后，为其添加HTML标记
+
+##程序由如下几个部分组成
+
+文本块生成器(util.py)：
+
+#coding:utf-8
+
+  def lines(file):
+          for line in file:yield line
+          yield &apos;\n&apos;
+
+  def blocks(file):">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python项目1：即时标记（将文本文件转化为HTML格式）">
+<meta property="og:url" content="http://yoursite.com/2015/11/01/mark/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="基本原理：将各种文本元素（如：标题、段落、列表等等）进行分类后，为其添加HTML标记
+
+##程序由如下几个部分组成
+
+文本块生成器(util.py)：
+
+#coding:utf-8
+
+  def lines(file):
+          for line in file:yield line
+          yield &apos;\n&apos;
+
+  def blocks(file):">
+<meta property="og:updated_time" content="2015-11-01T13:13:27.071Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python项目1：即时标记（将文本文件转化为HTML格式）">
+<meta name="twitter:description" content="基本原理：将各种文本元素（如：标题、段落、列表等等）进行分类后，为其添加HTML标记
+
+##程序由如下几个部分组成
+
+文本块生成器(util.py)：
+
+#coding:utf-8
+
+  def lines(file):
+          for line in file:yield line
+          yield &apos;\n&apos;
+
+  def blocks(file):">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mark" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/01/mark/" class="article-date">
+  <time datetime="2015-11-01T11:48:52.000Z" itemprop="datePublished">2015-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python项目1：即时标记（将文本文件转化为HTML格式）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>基本原理：</strong>将各种文本元素（如：标题、段落、列表等等）进行分类后，为其添加HTML标记</p>
+</blockquote>
+<p>##程序由如下几个部分组成</p>
+<blockquote>
+<p>文本块生成器(util.py)：</p>
+</blockquote>
+<pre><code><span class="comment">#coding:utf-8</span>
+
+  <span class="function"><span class="keyword">def</span> <span class="title">lines</span><span class="params">(file)</span>:</span>
+          <span class="keyword">for</span> line <span class="keyword">in</span> file:<span class="keyword">yield</span> line
+          <span class="keyword">yield</span> <span class="string">'\n'</span>
+
+  <span class="function"><span class="keyword">def</span> <span class="title">blocks</span><span class="params">(file)</span>:</span>
+         block=[]
+           <span class="keyword">for</span> line <span class="keyword">in</span> lines(file):
+              <span class="keyword">if</span> line.strip():
+                  block.append(line)
+              <span class="keyword">elif</span> block:
+                  <span class="keyword">yield</span> <span class="string">''</span>.join(block).strip()
+                  block=[]
+</code></pre><blockquote>
+<p>处理程序(handlers.py)：</p>
+</blockquote>
+<pre><code> <span class="comment">#coding:utf-8</span>
+<span class="class"><span class="keyword">class</span> <span class="title">Handler</span>:</span>
+    <span class="string">'''处理从parser调用的对象'''</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">callback</span><span class="params">(self,prefix,name,*args)</span>:</span>
+        method=getattr(self,prefix+name,<span class="keyword">None</span>)
+        <span class="keyword">if</span> callable(method):<span class="keyword">return</span> method(*args)
+    <span class="function"><span class="keyword">def</span> <span class="title">start</span><span class="params">(self,name)</span>:</span>
+        self.callback(<span class="string">'start_'</span>, name)
+    <span class="function"><span class="keyword">def</span> <span class="title">end</span><span class="params">(self,name)</span>:</span>
+        self.callback(<span class="string">'end_'</span>, name)
+    <span class="function"><span class="keyword">def</span> <span class="title">sub</span><span class="params">(self,name)</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">substitution</span><span class="params">(matchobject)</span>:</span>
+            result=self.callback(<span class="string">'sub_'</span>, name,matchobject)
+            <span class="keyword">if</span> result <span class="keyword">is</span> <span class="keyword">None</span>:result=matchobject.group(<span class="number">0</span>)
+            <span class="keyword">return</span> result
+        <span class="keyword">return</span> substitution 
+
+<span class="class"><span class="keyword">class</span> <span class="title">HTMLRenderer</span><span class="params">(Handler)</span>:</span>
+    <span class="string">'''用于生成HTML的具体处理程序'''</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">start_document</span><span class="params">(self)</span>:</span>
+        <span class="keyword">print</span> <span class="string">'&lt;html&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">end_doucument</span><span class="params">(self)</span>:</span>
+        <span class="keyword">print</span> <span class="string">'&lt;/body&gt;&lt;/html&gt;'</span>
+   <span class="function"><span class="keyword">def</span> <span class="title">start_paragraph</span><span class="params">(self)</span>:</span>
+        <span class="keyword">print</span> <span class="string">'&lt;p&gt;'</span>
+   <span class="function"><span class="keyword">def</span> <span class="title">end_paragragph</span><span class="params">(self)</span>:</span>
+        <span class="keyword">print</span> <span class="string">'&lt;/p&gt;'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">start_heading</span><span class="params">(self)</span>:</span>
+        <span class="keyword">print</span> <span class="string">'&lt;h2&gt;'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">end_heading</span><span class="params">(self)</span>:</span>
+        <span class="keyword">print</span> <span class="string">'&lt;/h2&gt;'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">start_list</span><span class="params">(self)</span>:</span>
+        <span class="keyword">print</span> <span class="string">'&lt;ul&gt;'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">end_list</span><span class="params">(self)</span>:</span>
+        <span class="keyword">print</span> <span class="string">'&lt;/ul&gt;'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">start_listitem</span><span class="params">(self)</span>:</span>
+        <span class="keyword">print</span> <span class="string">'&lt;li&gt;'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">end_listitem</span><span class="params">(self)</span>:</span>
+        <span class="keyword">print</span> <span class="string">'&lt;/li&gt;'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">start_title</span><span class="params">(self)</span>:</span>
+        <span class="keyword">print</span> <span class="string">'&lt;h1&gt;'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">end_title</span><span class="params">(self)</span>:</span>
+        <span class="keyword">print</span> <span class="string">'&lt;/h1&gt;'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">sub_emphasis</span><span class="params">(self,matchobject)</span>:</span>
+        <span class="keyword">return</span> <span class="string">'&lt;em&gt;%s&lt;/em&gt;'</span>%matchobject.group(<span class="number">1</span>)
+    <span class="function"><span class="keyword">def</span> <span class="title">sub_url</span><span class="params">(self,matchobject)</span>:</span>
+        <span class="keyword">return</span> <span class="string">'&lt;a href="%s"&gt;%s&lt;/a&gt;'</span>%(matchobject.group(<span class="number">1</span>),matchobject.group(<span class="number">1</span>))
+    <span class="function"><span class="keyword">def</span> <span class="title">sub_emil</span><span class="params">(self,matchobject)</span>:</span>
+        <span class="keyword">return</span> <span class="string">'&lt;a href="nailto:%s"&gt;%s&lt;/a&gt;'</span>% (matchobject.group(<span class="number">1</span>),matchobject.group(<span class="number">1</span>))
+    <span class="function"><span class="keyword">def</span> <span class="title">feed</span><span class="params">(self,data)</span>:</span>
+        <span class="keyword">print</span> data
+</code></pre><blockquote>
+<p>规则(rules.py):</p>
+</blockquote>
+<pre><code><span class="comment">#coding:utf-8</span>
+<span class="class"><span class="keyword">class</span> <span class="title">Rule</span><span class="params">()</span>:</span>
+    <span class="string">'''
+    所有规则的基类
+    '''</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">action</span><span class="params">(self,block,handler)</span>:</span>
+       handler.start(self.type)
+        handler.feed(block)
+        handler.end(self.type)
+        <span class="keyword">return</span> <span class="keyword">True</span>
+
+<span class="class"><span class="keyword">class</span> <span class="title">HeadingRule</span><span class="params">(Rule)</span>:</span>
+    <span class="string">'''
+    标题占以行，最多70个字符，并且不以冒号结尾。
+    '''</span>
+    type=<span class="string">'heading'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">condition</span><span class="params">(self,block)</span>:</span>
+        <span class="keyword">return</span> <span class="keyword">not</span> <span class="string">'\n'</span> <span class="keyword">in</span> block <span class="keyword">and</span> len(block)&lt;=<span class="number">70</span> <span class="keyword">and</span> <span class="keyword">not</span> block[-<span class="number">1</span>]==<span class="string">':'</span>
+
+<span class="class"><span class="keyword">class</span> <span class="title">TitleRule</span><span class="params">(HeadingRule)</span>:</span>
+    <span class="string">'''
+    题目是文档的第一个块，但前提是他是大标题。
+      '''</span>
+    type =<span class="string">'title'</span>
+    first =<span class="keyword">True</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">condition</span><span class="params">(self,block)</span>:</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> self.frist:<span class="keyword">return</span> <span class="keyword">False</span>
+        self.first=<span class="keyword">False</span>
+        <span class="keyword">return</span> HeadingRule.condition(self,block)
+
+<span class="class"><span class="keyword">class</span> <span class="title">ListItemRule</span><span class="params">(Rule)</span>:</span>
+    <span class="string">'''列表项是以连字符开始的段落。作为格式化的一部分，要一处连字符
+      '''</span>
+    type=<span class="string">'listitem'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">condition</span><span class="params">(self,block)</span>:</span>
+        <span class="keyword">return</span> block[<span class="number">0</span>]==<span class="string">'-'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">action</span><span class="params">(self,block,handler)</span>:</span>
+        handler.start(self.type)
+        handler.feed(block[<span class="number">1</span>:].strip())<span class="comment">#去除连字符 </span>
+        handler.end(self.type)
+        <span class="keyword">return</span> <span class="keyword">True</span>
+
+<span class="class"><span class="keyword">class</span> <span class="title">ListRule</span><span class="params">(ListItemRule)</span>:</span>
+    <span class="string">'''
+    列表从不是列表项的块和随后的列表项之间。在最后一个连续列表项之后结束
+    '''</span>
+    type=<span class="string">'list'</span>
+    inside=<span class="keyword">False</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">action</span><span class="params">(self,block,handler)</span>:</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> self.inside <span class="keyword">and</span> ListItemRule.condition(self,block):
+            handler.start(self.type)
+            self.inside=<span class="keyword">True</span>
+        <span class="keyword">elif</span> self.inside <span class="keyword">and</span> <span class="keyword">not</span> ListItemRule.condition(self,block):
+            handler.end(self.type)
+            self.inside=<span class="keyword">False</span>
+        <span class="keyword">return</span> <span class="keyword">False</span>
+
+<span class="class"><span class="keyword">class</span> <span class="title">ParagraphRule</span><span class="params">(Rule)</span>:</span>
+    <span class="string">'''
+    段落只是其他规则并没有覆盖到的块
+    '''</span>
+    type=<span class="string">'parapraph'</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">condition</span><span class="params">(self,block)</span>:</span>
+        <span class="keyword">return</span> <span class="keyword">True</span>
+</code></pre><blockquote>
+<p>主程序(markup.py):</p>
+</blockquote>
+<pre><code><span class="comment">#coding:utf-8</span>
+
+<span class="keyword">import</span> sys, re
+<span class="keyword">from</span> handlers <span class="keyword">import</span> *
+<span class="keyword">from</span> util  <span class="keyword">import</span> *
+<span class="keyword">from</span> rules <span class="keyword">import</span> *
+
+<span class="class"><span class="keyword">class</span> <span class="title">Parser</span>:</span>
+    <span class="string">'''
+     语法分析器读取文本文件，应用规则并且控制处理程序
+      '''</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,handler)</span>:</span>
+        self.handler=handler
+        self.rules=[]
+        self.filters=[]
+
+    <span class="function"><span class="keyword">def</span> <span class="title">addRule</span><span class="params">(self,block)</span>:</span>
+        self.rules.append(rule)
+    <span class="function"><span class="keyword">def</span> <span class="title">addFilter</span><span class="params">(self,pattern,name)</span>:</span>
+        <span class="function"><span class="keyword">def</span> <span class="title">filter</span><span class="params">(block,handler)</span>:</span>
+            <span class="keyword">return</span> re.sub(pattern,handler.sub(name),block)
+        self.filters.append(filter)
+    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self,file)</span>:</span>
+        self.handler.start(<span class="string">'document'</span>)
+        <span class="keyword">for</span> block <span class="keyword">in</span> blocks(file):
+            <span class="keyword">for</span> filter <span class="keyword">in</span> self.filters:
+                block=filter(block,self.handler)
+            <span class="keyword">for</span> rule <span class="keyword">in</span> self.rules:
+                <span class="keyword">if</span> rule.condition(block):
+                    last=rule.action(block,self.handler)
+                    <span class="keyword">if</span> last: <span class="keyword">break</span>
+        self.handler.end(<span class="string">'document'</span>)
+<span class="class"><span class="keyword">class</span> <span class="title">BasicTextPaser</span><span class="params">(Parser)</span>:</span>
+    <span class="string">'''
+    在构造函数中增加规则和过滤器的具体语法分析器
+    '''</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,handler)</span>:</span>
+        Paser.__init__(self,handler)
+        self.addRule(ListRule())
+        self.addRule(ListItemRule())
+        self.addRule(TitleRule())
+        elf.addRule(HeadingRule())
+        self.addRule(ParagraphRule())
+
+        self.addFilter(<span class="string">r'\*(.+?)\*'</span>,<span class="string">'emphasis'</span>)
+        self.addFilter(<span class="string">r'(http://[\.a-zA-Z]+)'</span>,<span class="string">'url'</span>)
+        self.addFilter(<span class="string">r'([\.a-zA-Z]+@[\.a-zA-Z]+[a-zA-Z]+)'</span>,<span class="string">'mail'</span>)
+
+handler=HTMLRenderer()
+parser=BasicTextParser(handler)
+
+parser.parse(sys.stdin)
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/01/mark/" data-id="cih1eb9720006rspv8p5g8md9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/02/interview-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          interview-1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/25/sort/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">选择排序和冒泡排序在python下的实现</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/11/15/drawing-1/">drawing-1</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/15/drawing/">python项目二-画幅好画</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/08/qiepian/">python 笔记1</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/02/interview-1/">interview-1</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/01/mark/">python项目1：即时标记（将文本文件转化为HTML格式）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
