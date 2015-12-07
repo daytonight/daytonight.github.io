@@ -4,89 +4,44 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>linux+hexo创建github博客 | DAYTONIGHT</title>
+    <title>python项目三-万能的XML | DAYTONIGHT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="daytonight">
     
 
     
-    <meta name="description" content="#linux+hexo创建github博客
-##本次博客从windows上迁移到linux上大概分为以下几步：
+    <meta name="description" content="基本原理：通过sax语法分析器编写处理程序解析一个xml文件，为其添加HTML标签，并生成目录，最终得到一个有目录结构的网站。
 
-安装linux并熟悉基本擦作：
+程序部分：from xml.sax.handler import ContentHandler
+from xml.sax import parse
+import os
 
-
-目录处理命令
-文件处理命令
-权限管理命令
-vim和gedit的使用
-
-
-我这里是用虚拟机安装的centos7
-
-搭建hexo环境
-
-
-
-通过yum源安装git
-sudo yum install git-core
-
-安装nvm
-git clone ht">
+class Dispatcher:
+        def dispatch(self, prefi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux+hexo创建github博客">
-<meta property="og:url" content="daytonight.github.io/2015/07/21/linux+hexo创建github博客/index.html">
+<meta property="og:title" content="python项目三-万能的XML">
+<meta property="og:url" content="daytonight.github.io/2015/12/06/all-purpose-XML-md/index.html">
 <meta property="og:site_name" content="DAYTONIGHT">
-<meta property="og:description" content="#linux+hexo创建github博客
-##本次博客从windows上迁移到linux上大概分为以下几步：
+<meta property="og:description" content="基本原理：通过sax语法分析器编写处理程序解析一个xml文件，为其添加HTML标签，并生成目录，最终得到一个有目录结构的网站。
 
-安装linux并熟悉基本擦作：
+程序部分：from xml.sax.handler import ContentHandler
+from xml.sax import parse
+import os
 
-
-目录处理命令
-文件处理命令
-权限管理命令
-vim和gedit的使用
-
-
-我这里是用虚拟机安装的centos7
-
-搭建hexo环境
-
-
-
-通过yum源安装git
-sudo yum install git-core
-
-安装nvm
-git clone ht">
-<meta property="og:updated_time" content="2015-07-22T07:59:11.132Z">
+class Dispatcher:
+        def dispatch(self, prefi">
+<meta property="og:updated_time" content="2015-12-06T11:16:43.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux+hexo创建github博客">
-<meta name="twitter:description" content="#linux+hexo创建github博客
-##本次博客从windows上迁移到linux上大概分为以下几步：
+<meta name="twitter:title" content="python项目三-万能的XML">
+<meta name="twitter:description" content="基本原理：通过sax语法分析器编写处理程序解析一个xml文件，为其添加HTML标签，并生成目录，最终得到一个有目录结构的网站。
 
-安装linux并熟悉基本擦作：
+程序部分：from xml.sax.handler import ContentHandler
+from xml.sax import parse
+import os
 
-
-目录处理命令
-文件处理命令
-权限管理命令
-vim和gedit的使用
-
-
-我这里是用虚拟机安装的centos7
-
-搭建hexo环境
-
-
-
-通过yum源安装git
-sudo yum install git-core
-
-安装nvm
-git clone ht">
+class Dispatcher:
+        def dispatch(self, prefi">
 
     
     <link rel="alternative" href="/atom.xml" title="DAYTONIGHT" type="application/atom+xml">
@@ -146,14 +101,14 @@ git clone ht">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/07/21/linux+hexo创建github博客/" title="linux+hexo创建github博客" itemprop="url">linux+hexo创建github博客</a>
+      <a href="/2015/12/06/all-purpose-XML-md/" title="python项目三-万能的XML" itemprop="url">python项目三-万能的XML</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="daytonight" target="_blank" itemprop="author">daytonight</a>
 		
   <p class="article-time">
-    <time datetime="2015-07-21T10:13:13.000Z" itemprop="datePublished"> 发表于 2015-07-21</time>
+    <time datetime="2015-12-06T11:09:37.000Z" itemprop="datePublished"> 发表于 2015-12-06</time>
     
   </p>
 </header>
@@ -162,56 +117,92 @@ git clone ht">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#程序部分："><span class="toc-number">1.</span> <span class="toc-text">程序部分：</span></a></li></ol>
 		
 		</div>
 		
-		<p>#<strong>linux+hexo创建github博客</strong></p>
-<p>##本次博客从windows上迁移到linux上大概分为以下几步：</p>
-<ul>
-<li><strong>安装linux并熟悉基本擦作</strong>：</li>
-</ul>
-<ol>
-<li>目录处理命令</li>
-<li>文件处理命令</li>
-<li>权限管理命令</li>
-<li>vim和gedit的使用</li>
-</ol>
-<ul>
-<li><p>我这里是用虚拟机安装的centos7</p>
-</li>
-<li><p><strong>搭建hexo环境</strong></p>
-</li>
-</ul>
-<ol>
-<li><p>通过yum源安装git</p>
-<pre><code>sudo yum <span class="keyword">install</span> git-core
-</code></pre></li>
-<li><p>安装nvm</p>
-<pre><code>git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/cnpm/nvm.git
+		<blockquote>
+<p>基本原理：通过sax语法分析器编写处理程序解析一个xml文件，为其添加HTML标签，并生成目录，最终得到一个有目录结构的网站。</p>
+</blockquote>
+<h3 id="程序部分：">程序部分：</h3><pre><code><span class="keyword">from</span> xml.sax.handler <span class="keyword">import</span> ContentHandler
+<span class="keyword">from</span> xml.sax <span class="keyword">import</span> parse
+<span class="keyword">import</span> os
 
-./install.<span class="keyword">sh</span>
-<span class="keyword">source</span> /home/git/nvm.<span class="keyword">sh</span>
-</code></pre></li>
-<li><p>通过 nvm 安装node</p>
-<pre><code>nvm install v0<span class="number">.12</span><span class="number">.5</span>
-nvm use v0<span class="number">.12</span><span class="number">.5</span>
-</code></pre></li>
-<li><p>通过nvm安装hexo</p>
-<pre><code>npm <span class="operator"><span class="keyword">install</span> -<span class="keyword">g</span> hexo-cli
-hexo init <span class="string">"your hexo filename"</span>
-npm <span class="keyword">install</span></span>
-</code></pre></li>
-</ol>
-<p>##将windows上创建的博客迁移到linux下（在不同电脑下用hexo更新github博客）</p>
-<ol>
-<li>下载github for windows</li>
-<li>将存放博客内容的分支克隆到本地</li>
-<li>将.html博客内容转换成.md</li>
-<li>复制博客内容到linux下重新生成和部署</li>
-<li>新建博客并发布到github上(方法和windows下相同)<br>#总结和感悟<br>关于centos的版本，我安装过cento6.5和centos7以及basic server和desktop，最后决定还是安装最新版本的好点。对于linux的熟悉部分目前仍还在进行，这也是本次写博客面临的第一个大问题。linux下的gedit编辑器真是好用，之前还特意去找了linux下的能实时预览的markdown，然后写了一下才发现gedit差不多就能预览了，还支持各种格式。此次博客最后一步的迁移虽然方法有点白痴（是我自己想的），不过是目前我能做到的最简单的方法了。</li>
-</ol>
-  
+<span class="class"><span class="keyword">class</span> <span class="title">Dispatcher</span>:</span>
+        <span class="function"><span class="keyword">def</span> <span class="title">dispatch</span><span class="params">(self, prefix, name, attrs=None)</span>:</span>
+                mname = prefix + name.capitalize()
+                dname = <span class="string">'default'</span> + prefix.capitalize()
+                method = getattr(self, mname, <span class="keyword">None</span>)
+                <span class="keyword">if</span> callable(method): args = ()
+                <span class="keyword">else</span>:
+                        method = getattr(self, dname, <span class="keyword">None</span>)
+                        args = name,
+                <span class="keyword">if</span> prefix == <span class="string">'start'</span>: args += attrs,
+                <span class="keyword">if</span> callable(method): method(*args)
+
+        <span class="function"><span class="keyword">def</span> <span class="title">startElement</span><span class="params">(self, name, attrs)</span>:</span>
+                self.dispatch(<span class="string">'start'</span>, name, attrs)
+
+        <span class="function"><span class="keyword">def</span> <span class="title">endElement</span><span class="params">(self, name)</span>:</span>
+                self.dispatch(<span class="string">'end'</span>, name)
+
+<span class="class"><span class="keyword">class</span> <span class="title">WebsiteConstructor</span><span class="params">(Dispatcher, ContentHandler)</span>:</span>
+        passthrough = <span class="keyword">False</span>
+
+        <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, directory)</span>:</span>
+                self.directory = [directory]
+                self.ensureDirectory()
+
+        <span class="function"><span class="keyword">def</span> <span class="title">ensureDirectory</span><span class="params">(self)</span>:</span>
+                path = os.path.join(*self.directory)
+                <span class="keyword">print</span> path
+                <span class="keyword">print</span> <span class="string">'----'</span>
+                <span class="keyword">if</span> <span class="keyword">not</span> os.path.isdir(path): os.makedirs(path)
+
+        <span class="function"><span class="keyword">def</span> <span class="title">characters</span><span class="params">(self, chars)</span>:</span>
+                <span class="keyword">if</span> self.passthrough: self.out.write(chars)
+
+        <span class="function"><span class="keyword">def</span> <span class="title">defaultStart</span><span class="params">(self, name, attrs)</span>:</span>
+                <span class="keyword">if</span> self.passthrough:
+                        self.out.write(<span class="string">'&lt;'</span> + name)
+                        <span class="keyword">for</span> key, val <span class="keyword">in</span> attrs.items():
+                                self.out.write(<span class="string">' %s="%s"'</span> %(key, val))
+                        self.out.write(<span class="string">'&gt;'</span>)
+        <span class="function"><span class="keyword">def</span> <span class="title">defaultEnd</span><span class="params">(self, name)</span>:</span>
+                <span class="keyword">if</span> self.passthrough:
+                        self.out.write(<span class="string">'&lt;/%s&gt;'</span> % name)
+
+        <span class="function"><span class="keyword">def</span> <span class="title">startDirectory</span><span class="params">(self, attrs)</span>:</span>
+                self.directory.append(attrs[<span class="string">'name'</span>])
+                self.ensureDirectory()
+
+        <span class="function"><span class="keyword">def</span> <span class="title">endDirectory</span><span class="params">(self)</span>:</span>
+                <span class="keyword">print</span> <span class="string">'endDirectory'</span>
+                self.directory.pop()
+
+        <span class="function"><span class="keyword">def</span> <span class="title">startPage</span><span class="params">(self, attrs)</span>:</span>
+                <span class="keyword">print</span> <span class="string">'startPage'</span>
+                filename = os.path.join(*self.directory + [attrs[<span class="string">'name'</span>]+<span class="string">'.html'</span>])
+                self.out = open(filename, <span class="string">'w'</span>)
+                self.writeHeader(attrs[<span class="string">'title'</span>])
+                self.passthrough = <span class="keyword">True</span>
+
+        <span class="function"><span class="keyword">def</span> <span class="title">endPage</span><span class="params">(self)</span>:</span>
+                <span class="keyword">print</span> <span class="string">'endPage'</span>
+                self.passthrough = <span class="keyword">False</span>
+                self.writeFooter()
+                self.out.close()
+
+        <span class="function"><span class="keyword">def</span> <span class="title">writeHeader</span><span class="params">(self, title)</span>:</span>
+                self.out.write(<span class="string">'&lt;html&gt;\n &lt;head&gt;\n   &lt;title&gt;'</span>)
+                self.out.write(title)
+                self.out.write(<span class="string">'&lt;/title&gt;\n &lt;/head&gt;\n  &lt;body&gt;\n'</span>)
+
+        <span class="function"><span class="keyword">def</span> <span class="title">writeFooter</span><span class="params">(self)</span>:</span>
+                self.out.write(<span class="string">'\n &lt;/body&gt;\n&lt;/html&gt;\n'</span>)
+
+parse(<span class="string">'website.xml'</span>,WebsiteConstructor(<span class="string">'public_html'</span>))
+</code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -223,7 +214,7 @@ npm <span class="keyword">install</span></span>
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="daytonight.github.io/2015/07/21/linux+hexo创建github博客/" data-title="linux+hexo创建github博客 | DAYTONIGHT" data-tsina="null" class="share clearfix">
+	  <div data-url="daytonight.github.io/2015/12/06/all-purpose-XML-md/" data-title="python项目三-万能的XML | DAYTONIGHT" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -237,18 +228,18 @@ npm <span class="keyword">install</span></span>
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/07/22/c-commands-of-linux/" title="linux常用命令归纳">
+ <a href="/2015/12/06/NNTP/" title="python项目四-新闻聚合">
   <strong>上一篇：</strong><br/>
   <span>
-  linux常用命令归纳</span>
+  python项目四-新闻聚合</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/07/21/summary/"  title="summary">
+<a href="/2015/11/15/drawing/"  title="python项目二-画幅好画">
  <strong>下一篇：</strong><br/> 
- <span>summary
+ <span>python项目二-画幅好画
 </span>
 </a>
 </div>
@@ -263,7 +254,7 @@ npm <span class="keyword">install</span></span>
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#程序部分："><span class="toc-number">1.</span> <span class="toc-text">程序部分：</span></a></li></ol>
  
   </div>
 
