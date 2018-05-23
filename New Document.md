@@ -1,4 +1,0 @@
-建这个博客走了好多弯路，开始下载了这个github for Windows不知道怎么用，就找了好多在github上建博客的教程，看了好多搭建环境的教程，还下载了git bash自己生成了ssh,后来才发现github for Windows会自动生成ssh,接着就是找了github for Windows的教程，发博客到浏览器的过程大概分为以下几步：
-本地建立一个项目并发布；
-创建一个文件夹添加到项目路径下；
-同步这个文件到浏览器github；
